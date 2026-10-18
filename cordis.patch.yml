@@ -1,0 +1,6 @@
+# dsh-chat-background bundle patch: one plugin row.
+# 宿主半边是空 apply（只为让这一行出现在宿主 Loader 里），浏览器半边通过
+# package.json 的 dsh.client 声明被发现并注入页面。
+- insert:
+    - id: chat-background
+      name: dsh-chat-background
