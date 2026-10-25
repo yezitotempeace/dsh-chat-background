@@ -75,10 +75,13 @@ check("veil colour follows the theme", client.includes("--dshbg-veil-color") && 
 check("light veil is halved", client.includes("state.veil * 0.5"));
 check("legacy veil assignment removed", !client.includes('setProperty("--dshbg-veil", String('));
 check("glass layers are theme-specific", client.includes('[data-ds-dark-theme][data-dshbg="on"][data-dshbg-glass="on"]'));
+check("thumbs sync runs even when the background is off", client.indexOf("syncPresetThumbs();") < client.indexOf("if (!on) {"));
+check("thumbs sync runs right after the panel is built", /document\.body\.appendChild\(overlay\);\s*\/\/[^\n]*\n\t\t\tsyncPresetThumbs\(\);/.test(client));
+check("thumbs sync runs on open", /ui\.overlay\.hidden = false;\s*\n\t\t\tsyncPresetThumbs\(\);/.test(client));
 check("preset thumbnails carry both paintings", client.includes("data-css-light=") && client.includes("data-css-dark="));
 check("preset thumbnails follow the theme", client.includes("function syncPresetThumbs") && client.includes("node.dataset.cssDark : node.dataset.cssLight"));
 check("preset grid fits 12 thumbs", client.includes("@media (max-width:360px){.dshbg-presets{grid-template-columns:repeat(4,1fr)}}"));
-check("version is 1.2.0", pkg.version === "1.2.0", "package.json says " + pkg.version);
+check("version is 1.2.1", pkg.version === "1.2.1", "package.json says " + pkg.version);
 check("package declares the bundle patch", pkg.dsh?.bundle?.patch === "./cordis.patch.yml");
 check("client half is declared for web", pkg.dsh?.client?.platform === "web");
 
