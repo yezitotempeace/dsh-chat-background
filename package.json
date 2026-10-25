@@ -1,6 +1,6 @@
 {
   "name": "dsh-chat-background",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "private": true,
   "description": "聊天背景美化：12 套随深浅主题自适应的渐变预设、本地图片/视频、清晰度、透明度、亮度、对比度、饱和度、缩放、遮罩与界面玻璃质感",
   "type": "module",
